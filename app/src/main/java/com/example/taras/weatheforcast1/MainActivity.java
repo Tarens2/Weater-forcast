@@ -6,17 +6,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.taras.weatheforcast1.fragments.FirstFragment;
 import com.example.taras.weatheforcast1.fragments.MainFragment;
-import com.example.taras.weatheforcast1.fragments.PrefFragment;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String tag = "TAG";
+    public static final String tag = "project1";
 
     private MainFragment mainFragment;
     SharedPreferences sp;
@@ -28,21 +29,29 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         sp = PreferenceManager.getDefaultSharedPreferences(this);
-        mainFragment = new MainFragment().newInstance(sp.getString("cityName","London"));
-        setCurrentFragment(mainFragment, false);
-        Log.v(MainActivity.tag,"create mainAct");
-/*
+        Log.v(MainActivity.tag, sp.getString("cityName", "qwe123").compareToIgnoreCase("wqe123") + "");
+        if(sp.getString("cityName","").compareTo("")==0){
+            setCurrentFragment( new FirstFragment().newInstance("",""), false);
+        }
+        else {
+            mainFragment = new MainFragment().newInstance(sp.getString("cityName", "London"));
+            setCurrentFragment(mainFragment, false);
+        }
+        Log.v(MainActivity.tag, "create mainAct");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab.hide();
+       /* fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });*/
+
     }
 
-    private void setCurrentFragment(Fragment fragment, boolean addToBackStack) {
+    public void setCurrentFragment(Fragment fragment, boolean addToBackStack) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
         if (addToBackStack) transaction.addToBackStack(null);
@@ -81,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            mainFragment.getDB().delAll();
+            //mainFragment.getDB().delAll();
             return true;
         }
 

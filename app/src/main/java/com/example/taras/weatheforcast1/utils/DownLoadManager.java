@@ -1,4 +1,7 @@
-package com.example.taras.weatheforcast1;
+package com.example.taras.weatheforcast1.utils;
+
+import com.example.taras.weatheforcast1.utils.DB;
+import com.example.taras.weatheforcast1.utils.DownloadJson;
 
 /**
  * Created by Taras on 02.05.2016.
@@ -19,7 +22,8 @@ public class DownLoadManager {
     }
 
     public void downloadJsonToDB(String cityName){
-        
-        new DownloadJson(db).execute(BASE_URL + DAY5_WEATHER + cityName + MODE + forAPPID + APPID);
+        //new DownloadJson(db).execute(BASE_URL + DAY5_WEATHER + cityName + MODE + forAPPID + APPID);
+       // new DownloadJson(db).execute("http:/10.0.3.2/php/api/jokes");
+        new DownloadJson(db).execute("http://jokes12.esy.es/assets/php/getTeam.php");
     }
 }

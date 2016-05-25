@@ -18,8 +18,8 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import com.example.taras.weatheforcast1.DB;
-import com.example.taras.weatheforcast1.DownLoadManager;
+import com.example.taras.weatheforcast1.utils.DB;
+import com.example.taras.weatheforcast1.utils.DownLoadManager;
 import com.example.taras.weatheforcast1.MainActivity;
 import com.example.taras.weatheforcast1.R;
 
@@ -91,8 +91,8 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
         listView = (ListView) rootView.findViewById(R.id.lvData);
         cityName = (TextView) rootView.findViewById(R.id.cityName);
         Log.v(MainActivity.tag,"create main-fragment");
-        sp =PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mParam1 = sp.getString("cityName", "wqe");
+       /* sp =PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mParam1 = sp.getString("cityName", "wqe");*/
 
         cityName.setText(mParam1);
 
@@ -147,7 +147,7 @@ public class MainFragment extends Fragment implements LoaderManager.LoaderCallba
 
         Log.v(MainActivity.tag, "resume main-fragment");
 
-        mParam1 = sp.getString("cityName", "11111");
+        //mParam1 = sp.getString("cityName", "11111");
         cityName.setText(mParam1);
         db.delAll();
         dm.downloadJsonToDB(mParam1);

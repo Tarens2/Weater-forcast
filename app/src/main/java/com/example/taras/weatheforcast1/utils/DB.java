@@ -1,4 +1,4 @@
-package com.example.taras.weatheforcast1;
+package com.example.taras.weatheforcast1.utils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.taras.weatheforcast1.MainActivity;
 import com.example.taras.weatheforcast1.model.WetherObject;
 
 import java.util.ArrayList;

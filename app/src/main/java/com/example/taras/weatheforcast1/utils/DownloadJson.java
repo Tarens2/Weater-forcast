@@ -1,9 +1,11 @@
-package com.example.taras.weatheforcast1;
+package com.example.taras.weatheforcast1.utils;
 
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.taras.weatheforcast1.MainActivity;
 import com.example.taras.weatheforcast1.model.WetherObject;
+import com.example.taras.weatheforcast1.utils.DB;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,7 +17,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
 /**
  * Created by Taras on 02.05.2016.
@@ -51,6 +52,7 @@ public class DownloadJson extends AsyncTask<String, Void, JSONObject> {
             }
             bufferedReader.close();
             str = sb.toString();
+            //Log.v(MainActivity.tag, "str"+str);
             json = new JSONObject(str);
 
         } catch (MalformedURLException ex) {
